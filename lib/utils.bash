@@ -41,8 +41,7 @@ download_release() {
 	version="$1"
 	filename="$2"
 
-	# TODO: Adapt the release URL convention for rye
-	arch=$(uname -m)
+	arch=$(uname -m | tr 'arm64' 'aarch64')
 	os=""
 	uname=$(uname -s | tr '[:upper:]' '[:lower:]')
 	if [ "$uname" -eq "linux" ]; then
