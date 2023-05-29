@@ -41,8 +41,19 @@ download_release() {
 	version="$1"
 	filename="$2"
 
-	# TODO: Adapt the release URL convention for rye
-	url="$GH_REPO/archive/${version}.tar.gz"
+	arch=$(uname -m | sed -e's/arm64/aarch64/')
+	os=""
+	uname=$(uname -s | tr '[:upper:]' '[:lower:]')
+	if [ "$uname" = "linux" ]; then
+		os="linux"
+	elif [ "$uname" = "darwin" ]; then
+		os="macos"
+	else
+		fail "Unsupported OS: $uname"
+	fi
+
+	# https://github.com/mitsuhiko/rye/releases/download/0.3.0/rye-aarch64-linux.gz
+	url="$GH_REPO/releases/download/${version}/${TOOL_NAME}-${arch}-${os}.gz"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
