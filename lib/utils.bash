@@ -42,7 +42,10 @@ download_release() {
 	filename="$2"
 
 	# TODO: Adapt the release URL convention for rye
-	url="$GH_REPO/archive/${version}.tar.gz"
+	machine=$(uname -m)
+	os=$(uname -s | tr '[:upper:]' '[:lower:]')
+	# https://github.com/mitsuhiko/rye/releases/download/0.3.0/rye-aarch64-linux.gz
+	url="$GH_REPO/releases/download/${version}/${TOOL_NAME}-${machine}-${os}.gz"
 
 	echo "* Downloading $TOOL_NAME release $version..."
 	curl "${curl_opts[@]}" -o "$filename" -C - "$url" || fail "Could not download $url"
