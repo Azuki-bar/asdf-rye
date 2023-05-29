@@ -44,9 +44,9 @@ download_release() {
 	arch=$(uname -m | tr 'arm64' 'aarch64')
 	os=""
 	uname=$(uname -s | tr '[:upper:]' '[:lower:]')
-	if [ "$uname" -eq "linux" ]; then
+	if [ "$uname" = "linux" ]; then
 		os="linux"
-	elif [ "$uname" -eq "darwin" ]; then
+	elif [ "$uname" = "darwin" ]; then
 		os="macos"
 	else
 		fail "Unsupported OS: $uname"
