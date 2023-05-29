@@ -41,7 +41,7 @@ download_release() {
 	version="$1"
 	filename="$2"
 
-	arch=$(uname -m | tr 'arm64' 'aarch64')
+	arch=$(uname -m | sed -e's/arm64/aarch64/')
 	os=""
 	uname=$(uname -s | tr '[:upper:]' '[:lower:]')
 	if [ "$uname" = "linux" ]; then
