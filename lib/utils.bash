@@ -51,7 +51,7 @@ download_release() {
 	else
 		fail "Unsupported OS: $uname"
 	fi
-	
+
 	# https://github.com/mitsuhiko/rye/releases/download/0.3.0/rye-aarch64-linux.gz
 	url="$GH_REPO/releases/download/${version}/${TOOL_NAME}-${arch}-${os}.gz"
 

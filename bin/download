@@ -18,7 +18,7 @@ download_release "$ASDF_INSTALL_VERSION" "$release_file"
 
 #  Extract contents of gz file into the download directory
 temp_dir=$(mktemp -d)
-gzip -d -c "$release_file" > "$temp_dir/rye"
+gzip -d -c "$release_file" >"$temp_dir/rye"
 install -m 0755 "$temp_dir/rye" "$ASDF_DOWNLOAD_PATH"
 rm -r "$temp_dir"
 
