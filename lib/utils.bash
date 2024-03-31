@@ -3,7 +3,7 @@
 set -euo pipefail
 
 # TODO: Ensure this is the correct GitHub homepage where releases can be downloaded for rye.
-GH_REPO="https://github.com/mitsuhiko/rye"
+GH_REPO="https://github.com/astral-sh/rye"
 TOOL_NAME="rye"
 TOOL_TEST="rye --version"
 
@@ -52,7 +52,7 @@ download_release() {
 		fail "Unsupported OS: $uname"
 	fi
 
-	# https://github.com/mitsuhiko/rye/releases/download/0.3.0/rye-aarch64-linux.gz
+	# https://github.com/astral-sh/rye/releases/download/0.3.0/rye-aarch64-linux.gz
 	url="$GH_REPO/releases/download/${version}/${TOOL_NAME}-${arch}-${os}.gz"
 
 	echo "* Downloading $TOOL_NAME release $version..."
